@@ -1,10 +1,11 @@
 .App {
   text-align: center;
-
+  background-color: grey
 }
 
 .container{
   width: 1000px;
   margin-right: auto;
   margin-left: auto;
+  min-height: 500px;
 }

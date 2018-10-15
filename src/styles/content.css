@@ -1,6 +1,4 @@
 .content{
-    background-color: grey;
-    padding-top: 70px;
-    display: grid;
-    grid-template-columns: 50% 50%;
+    background-color: darkgray;
+    margin-bottom: 20px;
 }

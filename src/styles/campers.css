@@ -1,0 +1,36 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.campers{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-column-gap: 50px;
+}
+
+.checked{
+    color: black;
+}
+
+.camper{
+    background-color: darkred;
+    min-height: 400px;
+    text-align: center;
+    border: solid red 2px;
+}
+
+.camper:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.camper-header{
+    background-color: lightcoral;
+    height: 20%;
+}
+
+.camper-footer{
+    color: white;
+}
+
+.camper-details{
+    height: 60%;
+}

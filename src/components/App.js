@@ -1,68 +1,60 @@
 import React, {Component} from 'react';
 import '../styles/App.css';
 import Header from "./Header";
-import Content from "./Content";
 import Footer from "./Footer";
+import Info from './Info';
+import Contact from './Contact';
+import Campers from './Campers';
+import Gallery from './Gallery';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerItems: ['Info', 'Campers', 'Limousines', 'Gallery', 'Contact'],
-      content: {
-        info: {
-          details: 'Najlepsza firma ever',
-          active: true
-        },
-        campers: [
-          {
-            title: 'camper1',
-            photo: 'https://i.pinimg.com/originals/30/68/88/3068885184e2b887f66dda15729c5fdc.jpg',
-            desc: 'desc1',
-            price: '100'
-          }, {
-            title: 'camper2',
-            photo: 'https://i.pinimg.com/236x/78/ec/51/78ec517b4128634932bad1293894a98e--vw-camper-vans-vw-vans.jpg',
-            desc: 'desc2',
-            price: '200'
-          }, {
-            title: 'camper3',
-            photo: 'http://www.coolcampers.co.uk/wordpress/wp-content/uploads/2013/10/For-sale-VW-camper-S042.jpg',
-            desc: 'desc3',
-            price: '300'
-          }, {
-            title: 'camper4',
-            photo: 'https://upload.wikimedia.org/wikipedia/commons/5/57/VW-T1b-Bus-Normalausf%C3%BChrung-Fr.jpg',
-            desc: 'desc4',
-            price: '400'
-          }, {
-            title: 'camper5',
-            photo: 'http://news.grantouritalia.it/wp-content/uploads/2016/05/P16-Main.jpg',
-            desc: 'desc5',
-            price: '500'
-          }, {
-            title: 'camper6',
-            photo: 'http://modculture.typepad.com/.a/6a00d83451cbb069e201538fdc9ff8970b-800wi',
-            desc: 'desc6',
-            price: '600'
-          }
-        ]
-      }
+      headerItems: [
+       {name: 'Info', active: false, desc: 'info'},
+       {name: 'Campers', active: false, content: [{name: 'camper1', stars: 3, price: 120, photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/White_Fiat_Ducato_Campervan_2006.jpg/1200px-White_Fiat_Ducato_Campervan_2006.jpg'},
+                                                  {name: 'camper2', stars: 2, price: 100, photo: 'https://cdn2.melodijolola.com/media/files/styles/nota_imagen/public/field/image/camper.jpg'},
+                                                  {name: 'camper3', stars: 1, price: 70, photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG_NFQkqdgVIDcdL8-yw0j9sh2CcTcaVXBKeFIMRIBjC0U6vvT' }]},
+      {name: 'Limousines', active: false, content:  [{name: 'limuzyna1', stars: 2, price: 500, photo: 'https://www.weselezklasa.pl/images/gallery/119/11158_12.jpg'},
+                                                  {name: 'limuzyna2', stars: 3, price: 2000, photo: 'https://thumbs.img-sprzedajemy.pl/1000x901c/3d/69/45/hummer-limuzyna-najwiekszy-w-europie-audi-r8-knurow-483026000.jpg'},
+                                                      {name: 'limuzyna3', stars: 1, price: 400, photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsWjwz4fIocm4fsuESQim3nPqP_fY2Ll1OFUlZmLXhCH8lCHsl' }]},
+       {name: 'Gallery', active: true, content: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/White_Fiat_Ducato_Campervan_2006.jpg/1200px-White_Fiat_Ducato_Campervan_2006.jpg',
+        'https://cdn2.melodijolola.com/media/files/styles/nota_imagen/public/field/image/camper.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG_NFQkqdgVIDcdL8-yw0j9sh2CcTcaVXBKeFIMRIBjC0U6vvT',
+        'https://www.weselezklasa.pl/images/gallery/119/11158_12.jpg',
+        'https://thumbs.img-sprzedajemy.pl/1000x901c/3d/69/45/hummer-limuzyna-najwiekszy-w-europie-audi-r8-knurow-483026000.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsWjwz4fIocm4fsuESQim3nPqP_fY2Ll1OFUlZmLXhCH8lCHsl'
+       ]},
+       {name: 'Contact', active: false, desc: {phone: '123324345', email: 'email@random.com'}}
+      ]
     }
   }
 
-  handleChangeContent() {
-    console.log('content Changed')
+  headerItemClickHandler = itemIndex => {
+    const headerItems = [...this.state.headerItems];
+    headerItems.forEach(item => {
+      item.active = false;
+    })
+    headerItems[itemIndex].active = !headerItems[itemIndex].active;
+    this.setState({headerItems: headerItems});
   }
 
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <Header items={this.state.headerItems}/>
-          <Content content={this.state.content}/>
-          <Footer/>
-        </div>
+      <Header items={this.state.headerItems} clicked={this.headerItemClickHandler} />
+
+      <div className="container">
+        <Contact contact={this.state.headerItems[4]} />
+        <Info info={this.state.headerItems[0]}/>
+        <Campers campers={this.state.headerItems[1]} />
+        <Campers campers={this.state.headerItems[2]} />
+        <Gallery photos={this.state.headerItems[3]} />
+      </div>
+
+      <Footer/>
       </div>
     );
   }
