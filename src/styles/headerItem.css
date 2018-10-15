@@ -1,0 +1,17 @@
+.headerItem{
+    display: inline-block;
+    width: 100px;
+    background: darkgrey;
+    margin: auto 5px;
+    height: 100%;
+    color: white;
+    text-align: center;
+    border: solid grey;
+    border-width: 0 2px;
+}
+
+.headerItem:hover{
+    background: aliceblue;
+    color: black;
+    cursor: pointer;
+}
