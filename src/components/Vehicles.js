@@ -22,7 +22,8 @@ const Vehicles = props => {
                 stars={vehicle.stars}
                 name={vehicle.name}
                 photo={vehicle.photo}
-                rented={vehicle.rented}/>
+                rented={vehicle.rented}
+                id={vehicle.id}/>
             })}
           </div>
         </div>

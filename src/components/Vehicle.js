@@ -7,9 +7,10 @@ const Vehicle = props => {
   let textButton = "RENT ME";
   let vehicleClasses = 'camper active';
   let buttonClasses = 'rent-button';
+  let link = "/rent?vehicleId=" + props.id;
 
   if(props.rented){
-    textButton = "NOT AVAILABLE";
+    textButton = "RENT ME FOR FUTURE!";
     vehicleClasses = 'camper';
     buttonClasses = 'rent-button disabled';
   }
@@ -21,7 +22,7 @@ const Vehicle = props => {
         {props.stars}
         <span className="fa fa-star checked"/><br/>
 
-        <button type="button" className={buttonClasses}>{textButton}</button>
+        <a href={link} className={buttonClasses}>{textButton}</a>
       </div>
       <div className="camper-details">
         <img src={props.photo} alt="photo" width='100%' height='100%'/>

@@ -1,4 +1,9 @@
 .content{
     background-color: darkgray;
     margin-bottom: 20px;
+    min-height: 500px;
+}
+
+.errors{
+    color: darkred;
 }
