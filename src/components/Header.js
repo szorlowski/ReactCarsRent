@@ -5,8 +5,8 @@ import "../styles/header.css"
 const Header = (props) => {
   return(
     <div className={"header"}>
-      {props.items.map((item, index) => {
-        return <HeaderItem name={item} key={Math.random()} clicked={() => props.clicked(index)}/>
+      {props.items.map((item) => {
+        return <HeaderItem name={item} key={Math.random()} click={props.click}/>
       })}
     </div>
   )

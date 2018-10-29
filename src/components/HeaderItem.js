@@ -4,8 +4,8 @@ import '../styles/headerItem.css'
 
 const HeaderItem = (props) =>{
   return(
-    <div className={"headerItem"} onClick={props.clicked}>
-      {props.name.name}
+    <div className={"headerItem"} onClick={() => props.click(props.name)}>
+      {props.name}
     </div>
   )
 };
