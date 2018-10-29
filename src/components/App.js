@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+
+
 import '../styles/App.css';
 import Header from "./Header";
-import Footer from "./Footer";
 import Info from './Info';
-import Contact from './Contact';
-import Vehicles from './Vehicles';
-import Gallery from './Gallery';
+import Footer from "./Footer";
+import Vehicles from "./Vehicles";
+import Contact from "./Contact";
 
 class App extends Component {
 
@@ -33,50 +35,67 @@ class App extends Component {
       });
   };
 
-  activateHeaderItem = (item) => {
-    let state = {...this.state};
-    Object.keys(state).forEach(key => {
-      state[key].active = key.toLowerCase() === item.toLowerCase();
-    });
-    this.setState(state);
-  };
-
-  headerItems = ['Info', 'Campers', 'Limousines', 'Gallery', 'Contact'];
+  headerItems =
+    [
+      {name: 'Info', link: '/'}, {name: 'Campers', link: '/campers'}, {name: 'Limousines', link: '/limousines'},
+      {name: 'Gallery', link: '/gallery'}, {name: 'Contact', link: '/contact'}
+    ];
 
   constructor(props) {
     super(props);
     this.state = {
       campers: {
-        active: false,
         content: []
       },
       limousines: {
-        active: false,
         content: []
       },
       info: {
-        active: true,
         desc: 'Opis najlepszej firmy ever'
+      },
+      contact: {
+        desc:{
+          phone: '+48 123 456 789',
+          email: 'super@email.com'
+        }
       }
     }
-  }
 
-  componentDidMount() {
-    this.setCampers();
-    this.setLimousines();
   }
 
   render() {
     return (
-      <div className="App">
-        <Header items={this.headerItems} click={(name) => this.activateHeaderItem(name)}/>
-        <div className="container">
-          <Info info={this.state.info}/>
-          <Vehicles vehicles={this.state.campers}/>
-          <Vehicles vehicles={this.state.limousines}/>
+      <Router>
+        <div className="App">
+          <Route
+            path="/"
+            render={(props) => <Header {...props} items={this.headerItems}/>}/>
+          <div className="container">
+            <Route
+              exact path="/"
+              render={(props) => <Info {...props} info={this.state.info}/>}/>
+            <Route
+              exact path="/campers"
+              render={(props) => <Vehicles {...props} vehicles={this.state.campers}
+                                           fetchVehicles={() => this.setCampers()}/>}
+            />
+            <Route
+              exact path="/limousines"
+              render={(props) => <Vehicles {...props} vehicles={this.state.limousines}
+                                           fetchVehicles={() => this.setLimousines()}/>}
+            />
+            <Route
+              exact path="/contact"
+              render={(props) => <Contact {...props} contact={this.state.contact}
+                                           fetchVehicles={() => this.setLimousines()}/>}
+            />
+          </div>
+          <Route
+            path="/"
+            component={Footer}
+          />
         </div>
-        <Footer/>
-      </div>
+      </Router>
     );
   }
 }

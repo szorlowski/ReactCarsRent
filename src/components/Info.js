@@ -1,22 +1,16 @@
 import React from 'react';
+import '../styles/content.css'
+
 
 const Info = props => {
-    const isActive = props.info.active;
-    let content;
-
-    if(isActive){
-        content = 
-        <React.Fragment>
+    return(
+        <div className="info content">
+          <React.Fragment>
             <h1>INFO</h1>
             <h2>Opis: {props.info.desc}</h2>
-        </React.Fragment>
-    }
-
-    return(
-        <div className="info content" onClick={props.clicked}>
-           {content}
+          </React.Fragment>
         </div>
     )
-}
+};
 
 export default Info;

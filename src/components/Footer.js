@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/footer.css'
 
 
-const Footer = (props) => {
+const Footer = () => {
   return(
     <div className={"footer"}>
       Created by Szymson

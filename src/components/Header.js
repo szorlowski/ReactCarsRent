@@ -6,7 +6,7 @@ const Header = (props) => {
   return(
     <div className={"header"}>
       {props.items.map((item) => {
-        return <HeaderItem name={item} key={Math.random()} click={props.click}/>
+        return <HeaderItem name={item.name} key={Math.random()} link={item.link}/>
       })}
     </div>
   )

@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/campers.css'
+import '../styles/content.css'
+
 
 const Vehicle = props => {
   let textButton = "RENT ME";

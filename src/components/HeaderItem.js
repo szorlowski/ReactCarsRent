@@ -4,9 +4,9 @@ import '../styles/headerItem.css'
 
 const HeaderItem = (props) =>{
   return(
-    <div className={"headerItem"} onClick={() => props.click(props.name)}>
+    <a href={props.link} className="headerItem">
       {props.name}
-    </div>
+    </a>
   )
 };
 
