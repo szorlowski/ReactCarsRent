@@ -94,7 +94,7 @@ class App extends Component {
                         <Route
                             exact path="/campers"
                             render={(props) => <Vehicles {...props} vehicles={this.state.campers}
-                                                         fetchVehicles={() => this.setCampers()}/>}
+                                                         fetchVehicles={(price) => this.setCampers(price)}/>}
                         />
                         <Route
                             exact path="/limousines"
@@ -103,8 +103,7 @@ class App extends Component {
                         />
                         <Route
                             exact path="/contact"
-                            render={(props) => <Contact {...props} contact={this.state.contact}
-                                                        fetchVehicles={(price) => this.setLimousines(price)}/>}
+                            render={(props) => <Contact {...props} contact={this.state.contact}/>}
                         />
                         <Route
                             exact path="/login"
