@@ -1,10 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 .campers{
-    display: grid;
-    grid-template-columns: 300px 300px 300px;
-    grid-column-gap: 50px;
-    grid-row-gap: 10px;
+    display: flex;
 }
 
 .checked{
@@ -18,10 +15,6 @@
     border: solid red 2px;
 }
 
-.active:hover{
-    transform: scale(1.1);
-    transition: transform 0.5s;
-}
 
 .camper-header{
     background-color: lightcoral;
@@ -42,4 +35,14 @@
 
 .disabled{
     background-color: red;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+    transform: rotate(-45deg);
+    font-size: 40px;
 }

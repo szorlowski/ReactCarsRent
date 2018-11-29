@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "install": "^0.12.2",
+    "npm": "^6.4.1",
+    "nuka-carousel": "^4.4.3",
     "query-string": "^6.2.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-pure-lifecycle": "^3.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4"
+    "react-scripts": "2.0.4",
+    "react-slick": "^0.23.2"
   },
   "scripts": {
     "start": "react-scripts start",

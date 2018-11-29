@@ -21,11 +21,11 @@ const Vehicle = props => {
         {props.name}<br/>
         {props.stars}
         <span className="fa fa-star checked"/><br/>
-
         <a href={link} className={buttonClasses}>{textButton}</a>
       </div>
       <div className="camper-details">
         <img src={props.photo} alt="photo" width='100%' height='100%'/>
+        <div className="centered">RENT ME</div>
       </div>
       <div className="camper-footer">
         CENA ZA GODZINE: {props.price}
